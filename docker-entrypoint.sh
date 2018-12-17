@@ -278,7 +278,4 @@ EOPHP
 	done
 fi
 
-# Restore wordpress content from backup
-cp -R /backup/wp-content/* /var/www/html/wp-content
-
 exec "$@"
