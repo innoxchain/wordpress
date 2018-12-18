@@ -5,7 +5,7 @@ RUN set -ex; \
 	\
 	savedAptMark="$(apt-mark showmanual)"; \
 	\
-	apt-get update; \
+	apt-get update; \	
 	apt-get install -y --no-install-recommends \
 		libjpeg-dev \
 		libpng-dev \
@@ -55,6 +55,9 @@ RUN set -ex; \
 	chown -R www-data:www-data /usr/src/wordpress
 
 COPY docker-entrypoint.sh /usr/local/bin/
+
+RUN apt-get update
+RUN apt-get install -y lsyncd
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
