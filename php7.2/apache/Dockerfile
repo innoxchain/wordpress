@@ -56,6 +56,7 @@ RUN set -ex; \
 
 COPY docker-entrypoint.sh /usr/local/bin/
 COPY uploads.ini /usr/local/etc/php/conf.d/uploads.ini
+COPY lsyncd.conf /etc/lsyncd.conf
 
 RUN apt-get update
 RUN apt-get install -y lsyncd

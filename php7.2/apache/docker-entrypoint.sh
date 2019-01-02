@@ -280,9 +280,11 @@ fi
 
 # Restore wordpress content from backup
 cp -R /backup/wp-content/* /var/www/html/wp-content
-chown -R www-data:www-data /var/www/html/wp-content
 
 # Start sync to /backup/wp-content again
-lsyncd -rsync /var/www/html/wp-content/ /backup/wp-content/
+lsyncd /etc/lsyncd.conf
+
+# Fix permissions
+chown -R www-data:www-data /var/www/html/wp-content
 
 exec "$@"
